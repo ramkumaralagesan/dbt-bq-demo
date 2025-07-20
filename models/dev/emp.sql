@@ -1,4 +1,9 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    contract={
+      'enforced': true
+    }
+) }}
 
 SELECT 
     t1.emp_no, 
@@ -7,7 +12,8 @@ SELECT
     t1.name, 
     t1.sal, 
     t1.dob, 
-    t1.remark
+    t1.remark,
+    t1.last_updated
 FROM 
     {{ source('xch', 'emp') }} AS t1
 JOIN 

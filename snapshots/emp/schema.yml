@@ -1,27 +1,35 @@
 version: 2
 
-sources:
-  - name: xch
-    schema: dev
-    tables:
-      - name: emp
-
 models:
   - name: emp
     description: Employee details fetched from source table `xch.emp`
     columns:
       - name: emp_no
         description: Unique ID for each employee
+        data_type: INT
       - name: dno
         description: Department number (foreign key from dept)
+        data_type: INT
+        tests:
+          - not_null
+      - name: dname
+        description: Department number (foreign key from dept)
+        data_type: String
       - name: name
         description: Name of the employee
+        data_type: String
       - name: sal
         description: sal
+        data_type: INT
       - name: dob
         description: dob
+        data_type: Date
       - name: remark
         description: remark
+        data_type: String
+      - name: last_updated
+        description: last_updated
+        data_type: TimeStamp
 
 seeds:
   - name: dept
